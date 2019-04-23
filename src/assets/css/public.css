@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height:100%;
+  width: 100%;
+}
+.bottomBar {
+  position: fixed;
+  bottom: 0; left: 0;
+  z-index: 999;
+}
+.Router {
+  position: absolute;
+  width: 100%;
+  transition: all .8s ease;
+  top: 40px;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100% 0);
+}

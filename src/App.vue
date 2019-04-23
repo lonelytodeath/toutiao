@@ -1,23 +1,36 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
+    <bottom-tabar class="bottomBar"></bottom-tabar>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import bottomTabar from '@/components/bottomTabar/index';
+  export default {
+    name: 'App',
+    components: {
+      'bottom-tabar': bottomTabar,
+    },
+    data: () => ({
+      transitionName: 'slide-right'
+    }),
+    watch: {
+      $route(to, from) {
+        const isBack = this.$router.isBack;
+        if(isBack) {
+          this.transitionName = 'slide-right';
+        } else {
+          this.transitionName = 'slide-left';
+        }
+        this.$router.isBack = false;
+      }
+    }
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import './assets/css/public.css';
 </style>
