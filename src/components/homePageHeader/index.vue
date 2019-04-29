@@ -36,7 +36,7 @@
   }
   .homePageHeader {
     height: 2rem;
-    background-color: #da2222;
+    background-color: #d43d3d;
   }
   .appName {
     font-size: 0.6rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="bottomTabar">
-    <router-link :to="{name: 'HomePage'}" class="bottomTabarItem">
+    <router-link :to="{name: 'HomePage'}" class="bottomTabarItem" exact>
       <div>
         <img src="./../../assets/img/homePage.png" class="icon" v-if="currentRouter !== 'HomePage'"/>
         <img src="./../../assets/img/homePageSelect.png" class="icon" v-else/>
@@ -69,5 +69,8 @@
   }
   .bottomTabarItem .icon {
     width: 0.7rem;
+  }
+  .router-link-active {
+    color: red;
   }
 </style>

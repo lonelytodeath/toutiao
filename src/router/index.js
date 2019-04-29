@@ -2,30 +2,35 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from './../store/index';
 
-Router.prototype.goBack = function () {
-  this.isBack = true;
-  window.history.go(-1)
-};
-
 Vue.use(Router)
 
 import HomePage from '@/pages/homePage/index';
+import homePageHeader from '@/components/homePageHeader/index';
 const router = new Router({
   routes: [
     {
       path: '/',
       name: 'HomePage',
-      component: HomePage
+      component: HomePage,
+      meta: {
+        index: 1,
+      },
     },
     {
       path: '/bookmark',
       name: 'Bookmark',
-      component: HomePage
+      component: homePageHeader,
+      meta: {
+        index: 2,
+      },
     },
     {
       path: '/aboutMe',
       name: 'AboutMe',
-      component: HomePage
+      component: HomePage,
+      meta: {
+        index: 3,
+      },
     }
   ]
 });

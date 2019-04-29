@@ -19,13 +19,12 @@
     }),
     watch: {
       $route(to, from) {
-        const isBack = this.$router.isBack;
-        if(isBack) {
-          this.transitionName = 'slide-right';
-        } else {
+        if(to.meta.index > from.meta.index){
+          //设置动画名称
           this.transitionName = 'slide-left';
+        }else{
+          this.transitionName = 'slide-right';
         }
-        this.$router.isBack = false;
       }
     }
   }
@@ -33,4 +32,5 @@
 
 <style>
   @import './assets/css/public.css';
+  @import './assets/css/transition.css';
 </style>
