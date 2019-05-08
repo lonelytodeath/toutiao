@@ -20,6 +20,7 @@
     name: 'scroll',
     data() {
       return {
+        scrollTop: 0,
         state: 0, // 0未刷新, 1为松开刷新，2为正在刷新
         startY: 0, // 窗口纵坐标
         marginTop: -height,
