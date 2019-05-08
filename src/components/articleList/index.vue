@@ -8,6 +8,7 @@
   import articleCell from '@/components/articleCell/index';
   export default {
     name: 'articleList',
+    props: ['state'],
     data() {
       return {
         articleList: [
@@ -132,20 +133,37 @@
             time: '2017-01-01 12:00:00'
           },
         ],
+        page: 1,
+        pageSize: 100,
       }
     },
     components: {
       'article-cell': articleCell,
     },
+    created() {
+      console.log(this.state);
+    },
+    watch: {
+      state: function (newState, oldState) {
+        this.refreshData(newState);
+      }
+    },
+    methods: {
+      refreshData: function (state) {
+        if (state === 2) {
+          this.page = this.page + 1;
+          console.log(`当前页: ${this.page}`);
+        }
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .articleList {
     padding: 0 0.3125rem;
-    overflow: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    height: 100%;
   }
 
 </style>

@@ -7,7 +7,7 @@ import store from './store'
 import VueLazyLoad from 'vue-lazyload'
 import vueTouch from 'vue-plugin-touch'
 
-import * as loadingImg from './assets/img/loading.png';
+import * as loadingImg from './assets/img/loading.gif';
 import * as errorImg from './assets/img/error.png';
 
 import articleList from '@/components/articleList/index';

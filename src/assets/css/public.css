@@ -1,18 +1,30 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   font-family: PingFangSC-Regular, sans-serif;
-  overflow-x: hidden;
 }
 
 body {
-  position: relative;
   -webkit-overflow-scrolling: touch;
 }
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .bottomBar {
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+* {
+  -webkit-touch-callout:none; /*系统默认菜单被禁用*/
+  -webkit-user-select:none; /*webkit浏览器*/
+  -khtml-user-select:none; /*早期浏览器*/
+  -moz-user-select:none;/*火狐*/
+  -ms-user-select:none; /*IE10*/
+  user-select:none;
 }
