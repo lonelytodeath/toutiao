@@ -4,9 +4,14 @@
       <homepage-header class="homepageHeaderItem"></homepage-header>
       <category-tabar class="categoryTabarItem"></category-tabar>
     </div>
-    <scroll-view class="scrollArticleList" v-slot:default="props">
-      <article-list class="articleListItem" :state="props.state"></article-list>
-    </scroll-view>
+    <div class="loading" v-show="isLoading">
+      <img src="./../../assets/img/listLoading.png" class="loadingImg"/>
+    </div>
+    <transition name="fade">
+      <scroll-view class="scrollArticleList" v-slot:default="props" ref="scorllView" v-show="!isLoading">
+        <article-list class="articleListItem" :state="props.state" :action="props.action" @loadingNotify="loadingNotify"></article-list>
+      </scroll-view>
+    </transition>
   </div>
 </template>
 
@@ -26,9 +31,25 @@
     },
     data () {
       return {
-        msg: '',
+        isLoading: true,
       }
     },
+    watch: {
+      homeTag: function () {
+        this.isLoading = true;
+      }
+    },
+    computed: {
+      homeTag () {
+        return this.$store.state.homeTag;
+      }
+    },
+    methods: {
+      loadingNotify: function (loadingResult, newsCount) {
+        this.isLoading = false;
+        this.$refs.scorllView.loadingSuccess(loadingResult, newsCount);
+      }
+    }
   };
 </script>
 
@@ -43,5 +64,28 @@
   .scrollArticleList {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+  }
+
+  @-webkit-keyframes animal {
+    0%{
+      transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(-360deg);
+      -ms-transform: rotate(-360deg);
+      -webkit-transform: rotate(-360deg);
+    }
+  }
+  .loading .loadingImg {
+    position: absolute;
+    top: 40%;
+    width: 30%;
+    left: 35%;
+    -webkit-animation: animal 2s infinite linear ;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
   }
 </style>

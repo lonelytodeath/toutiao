@@ -8,7 +8,8 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  currentTabar: 'HomePage'
+  currentTabar: 'HomePage',
+  homeTag: 0,
 };
 
 export default new Vuex.Store({

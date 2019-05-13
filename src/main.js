@@ -6,6 +6,9 @@ import router from './router'
 import store from './store'
 import VueLazyLoad from 'vue-lazyload'
 import vueTouch from 'vue-plugin-touch'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import moment from 'moment';
 
 import * as loadingImg from './assets/img/loading.gif';
 import * as errorImg from './assets/img/error.png';
@@ -16,12 +19,18 @@ import articleList from '@/components/articleList/index';
 Vue.config.productionTip = false
 
 Vue.use(vueTouch);
+Vue.use(VueAxios, axios);
 
 
 Vue.use(VueLazyLoad, {
   error: errorImg,
   loading: loadingImg,
 });
+
+Vue.filter('dateformat', function(dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+  return moment(dataStr).format(pattern);
+
+})
 
 Vue.component('article-list', articleList);
 

@@ -19,10 +19,10 @@
     </header>
     <footer class="footer">
       <div class="detail">
-        <div class="media">{{ article.media }}</div>
+        <div class="media">{{ article.source }}</div>
         <div class="commentCount"><span>评论</span> {{ article.commentCount }}</div>
       </div>
-      <div class="time">{{ article.time }}</div>
+      <div class="time">{{ article.createdAt | dateformat() }}</div>
     </footer>
   </div>
 </template>
@@ -60,6 +60,7 @@
       .title {
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: justify;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;

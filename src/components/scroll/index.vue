@@ -4,7 +4,7 @@
       <img src="./../../assets/img/refreshLoading.gif" class="refreshIcon"/>
       <span>{{ state === 0 ? '下拉更新' : state === 1 ? '松开更新' : '正在更新中....'}}</span>
     </header>
-    <slot v-bind:state="state"></slot>
+    <slot v-bind:state="state" v-bind:action="action"></slot>
     <footer class="loadMore">
       <div>
         {{ noDataFlag ? '我是有底线的' : state === 0 ? '上拉下载更多' : '正在加载中...'}}
@@ -66,24 +66,15 @@
         if (this.action === 1) { // 下拉刷新中
           if (this.state === 1) {
             this.state = 2;
-            const _self = this;
-            setTimeout(() => {
-              _self.marginTop = -height;
-              this.state = 0;
-            }, 2000);
-          } else {
-            this.marginTop = -height;
           }
         }
-        if (this.action === 2 && this.scrollTop + this.windowHeight + threshold >= this.scrollHeight) { // 触发上拉加载
+        else if (this.action === 2 && this.scrollTop + this.windowHeight + threshold >= this.scrollHeight) { // 触发上拉加载
           if (this.state !== 2) {
             this.state = 2;
           }
-          this.noDataFlag = false;
-          setTimeout(() => {
-            this.noDataFlag = true;
-            this.state = 0;
-          }, 2000);
+        }
+        else {
+          this.marginTop = -height;
         }
       },
       // 滚动条到顶部距离
@@ -119,6 +110,16 @@
           windowHeight = document.body.clientHeight;
         }
         return windowHeight;
+      },
+      // 加载完毕后更改状态
+      loadingSuccess: function (isSuccess, newsCount) {
+        if (isSuccess) {
+          if (this.action === 1) {
+            this.marginTop = -height;
+          }
+          this.state = 0;
+          this.noDataFlag = newsCount <= 0;
+        }
       }
     },
   }

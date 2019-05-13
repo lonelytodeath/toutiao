@@ -1,7 +1,7 @@
 <template>
   <div class="category container" ref="category">
     <ul id="categoryList">
-      <li v-for="item in items" class="categoryItem" :class="{ active: isActive === item.title}" v-on:click="selectCategory(item.title)" :key="item.title">
+      <li v-for="item in items" class="categoryItem" :class="{ active: tag === item.id}" v-on:click="selectCategory(item.id)" :key="item.id">
         {{ item.title }}
       </li>
     </ul>
@@ -9,51 +9,60 @@
 </template>
 
 <script>
+  import store from './../../store/index';
   export default {
     name: 'categoryTabar',
     data () {
       return {
         items: [
           {
+            id: 0,
             title: '推荐',
           },
           {
+            id: 1,
             title: '热点',
           },
           {
+            id: 2,
             title: '社会',
           },
           {
+            id: 3,
             title: '娱乐',
           },
           {
+            id: 4,
             title: '科技',
           },
           {
-            title: '汽车',
-          },
-          {
+            id: 5,
             title: '体育',
           },
           {
+            id: 6,
             title: '财经',
           },
           {
+            id: 7,
             title: '军事',
           },
           {
+            id: 8,
             title: '国际',
           },
           {
+            id: 9,
             title: '时尚',
           },
         ],
-        isActive: '推荐',
+        tag: 0,
       }
     },
     methods: {
-      selectCategory: function (title) {
-        this.isActive = title;
+      selectCategory: function (id) {
+        this.tag = id;
+        store.commit('switchTagBar', {homeTag: id});
       }
     }
   }

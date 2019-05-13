@@ -4,5 +4,8 @@
 export default {
   switchBottomTabar(state, payload) {
     state.currentTabar = payload.currentTabar;
+  },
+  switchTagBar(state, payload) {
+    state.homeTag = payload.homeTag;
   }
 }

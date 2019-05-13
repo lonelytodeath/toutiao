@@ -6,153 +6,51 @@
 
 <script>
   import articleCell from '@/components/articleCell/index';
+  import store from './../../store/index';
+  import Request from './../../axios';
   export default {
     name: 'articleList',
-    props: ['state'],
+    props: ['state', 'action'],
     data() {
       return {
-        articleList: [
-          {
-            _id: 1,
-            title: '这是测试文章这是',
-            imgs: [],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 2,
-            title: '这是测试文章xxxxx章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 3,
-            title: '这是测试文章xxxxx',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 4,
-            title: '这是测试文章xxxxx',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 5,
-            title: '这是测试文章xxxxx',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 6,
-            title: '这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章',
-            imgs: [],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 7,
-            title: '这是测试文章xxxxx章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 8,
-            title: '这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是',
-            imgs: [],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 9,
-            title: '这是测试文章xxxxx章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是试文章这是测试文章这是测试文章这是测试文章这是章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是章这是测试文章这是测',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 10,
-            title: '这是测试文章xxxxx',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 11,
-            title: '这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章这是测试文章',
-            imgs: [],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-          {
-            _id: 12,
-            title: '这是测试文章xxxxx',
-            imgs: [
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-              'http://img5.imgtn.bdimg.com/it/u=935292084,2640874667&fm=26&gp=0.jpg',
-            ],
-            media: '今日头条',
-            commentCount: 10,
-            time: '2017-01-01 12:00:00'
-          },
-        ],
+        articleList: [],
         page: 1,
-        pageSize: 100,
+        pageSize: 10,
       }
     },
     components: {
       'article-cell': articleCell,
     },
     created() {
-      console.log(this.state);
+      this.getList();
     },
     watch: {
       state: function (newState, oldState) {
         this.refreshData(newState);
+      },
+      homeTag: function (newHomeTag) {
+        this.page = 1;
+        this.getList();
+      }
+    },
+    computed: {
+      homeTag () {
+        return this.$store.state.homeTag;
       }
     },
     methods: {
-      refreshData: function (state) {
+      getList: async function() {
+        const request = new Request();
+        const data = await request.getNewsList(this.homeTag, this.page, this.pageSize);
+        if (data.success) {
+          this.articleList = this.action !== 2 ? data.data : this.articleList.concat(data.data);
+          this.$emit('loadingNotify', true, data.data.length);
+        }
+      },
+      refreshData: async function (state) {
         if (state === 2) {
           this.page = this.page + 1;
-          console.log(`当前页: ${this.page}`);
+          await this.getList();
         }
       }
     }
