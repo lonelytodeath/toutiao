@@ -9,7 +9,7 @@ class Request {
   }
 
   async getNewsList(tag, page, pageSize) {
-    const path = `/v1/news?tag=${tag}&page=${page}&pageSize=${pageSize}`;
+    const path = `${process.env.API_ROOT}/v1/news?tag=${tag}&page=${page}&pageSize=${pageSize}`;
     const result = await this.$http.get(path);
     return result.data;
   }
