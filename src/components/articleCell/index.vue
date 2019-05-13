@@ -64,7 +64,7 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
-        -webkit-box-pack: center;
+        -webkit-box-pack: start;
       }
       .noImg {
         display: flex;
