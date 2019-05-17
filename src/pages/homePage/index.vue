@@ -37,6 +37,7 @@
     watch: {
       homeTag: function () {
         this.isLoading = true;
+        this.$refs.scorllView.scrollToTop();
       }
     },
     computed: {

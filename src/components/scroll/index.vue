@@ -120,7 +120,12 @@
           this.state = 0;
           this.noDataFlag = newsCount <= 0;
         }
-      }
+      },
+      // 滚动条置顶
+      scrollToTop: function () {
+        window.scrollTo(0,0);
+        this.action = 0;
+      },
     },
   }
 </script>
