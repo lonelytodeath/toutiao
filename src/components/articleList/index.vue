@@ -52,7 +52,7 @@
           this.page = this.page + 1;
           await this.getList();
         }
-      }
+      },
     }
   }
 </script>

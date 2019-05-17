@@ -49,7 +49,7 @@
       loadingNotify: function (loadingResult, newsCount) {
         this.isLoading = false;
         this.$refs.scorllView.loadingSuccess(loadingResult, newsCount);
-      }
+      },
     }
   };
 </script>
@@ -84,9 +84,24 @@
     top: 40%;
     width: 30%;
     left: 35%;
-    -webkit-animation: animal 2s infinite linear ;
-    -webkit-transform-origin: center center;
-    -ms-transform-origin: center center;
-    transform-origin: center center;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation: rotate 3s linear infinite;
+    -moz-animation: rotate 3s linear infinite;
+    -o-animation: rotate 3s linear infinite;
+    animation: rotate 3s linear infinite;}
+  @-webkit-keyframes rotate{from{-webkit-transform: rotate(0deg)}
+    to{-webkit-transform: rotate(360deg)}
+  }
+  @-moz-keyframes rotate{from{-moz-transform: rotate(0deg)}
+    to{-moz-transform: rotate(359deg)}
+  }
+  @-o-keyframes rotate{from{-o-transform: rotate(0deg)}
+    to{-o-transform: rotate(359deg)}
+  }
+  @keyframes rotate{from{transform: rotate(0deg)}
+    to{transform: rotate(359deg)}
   }
 </style>

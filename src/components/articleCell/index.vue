@@ -1,5 +1,5 @@
 <template>
-  <div class="articleCell container">
+  <div class="articleCell container" @click="openDetailUrl(article.sourceUrl)">
     <header class="header">
       <div class="noImg" v-if="!article.imgs || article.imgs.length === 0">
         <div class="title">{{ article.title }}</div>
@@ -33,6 +33,11 @@
     props: ['article'],
     data() {
       return {}
+    },
+    methods: {
+      openDetailUrl: function (url) {
+        window.location.href = url;
+      }
     }
   }
 </script>

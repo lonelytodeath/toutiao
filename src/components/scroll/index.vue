@@ -4,6 +4,11 @@
       <img src="./../../assets/img/refreshLoading.gif" class="refreshIcon"/>
       <span>{{ state === 0 ? '下拉更新' : state === 1 ? '松开更新' : '正在更新中....'}}</span>
     </header>
+    <transition name="fade">
+      <div class="tips" v-if="tipsShow">
+        <div class="text">已为您更新{{loadingCount}}条文章</div>
+      </div>
+    </transition>
     <slot v-bind:state="state" v-bind:action="action"></slot>
     <footer class="loadMore">
       <div>
@@ -27,6 +32,8 @@
         startPageY: 0, // 文档纵坐标
         action: 0, // 1为下拉，2为上拉
         noDataFlag: false, // 是否有新数据的标识
+        loadingCount: 0, // 更新数量
+        tipsShow: false, // 是否展示加载完成后提示
       }
     },
     created () {
@@ -116,6 +123,12 @@
         if (isSuccess) {
           if (this.action === 1) {
             this.marginTop = -height;
+            this.loadingCount = newsCount;
+            this.tipsShow = true;
+            const _self = this;
+            setTimeout(() => {
+              _self.tipsShow = false;
+            }, 1000);
           }
           this.state = 0;
           this.noDataFlag = newsCount <= 0;
@@ -145,5 +158,16 @@
     width: 0.8rem;
     height: 0.8rem;
     margin-right: 5px;
+  }
+  .tips {
+    width: 100%;
+    height: 1rem;
+    color: #cfd7d6;
+    background-color: #3b88d7;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
   }
 </style>
