@@ -2,7 +2,7 @@
   <div class="homePageHeader container">
     <div class="headerBackground">
       <div class="appName">
-        今日头条
+        推荐头条
       </div>
     </div>
     <search-bar></search-bar>
