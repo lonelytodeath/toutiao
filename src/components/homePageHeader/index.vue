@@ -5,7 +5,7 @@
         推荐头条
       </div>
     </div>
-    <search-bar></search-bar>
+    <search-bar @click.native="clickSearch" :readonly="true"></search-bar>
   </div>
 </template>
 
@@ -19,6 +19,11 @@
     data () {
       return {
         msg: '',
+      }
+    },
+    methods: {
+      clickSearch: function () {
+        this.$router.push({name: 'searchPage'});
       }
     }
   };

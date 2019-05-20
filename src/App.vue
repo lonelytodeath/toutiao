@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name="transitionName">
+    <transition name="right" mode="out-in">
       <router-view></router-view>
     </transition>
     <bottom-tabar class="bottomBar"></bottom-tabar>
@@ -14,19 +14,6 @@
     components: {
       'bottom-tabar': bottomTabar,
     },
-    data: () => ({
-      transitionName: 'slide-right'
-    }),
-    watch: {
-      $route(to, from) {
-        if(to.meta.index > from.meta.index){
-          //设置动画名称
-          this.transitionName = 'slide-left';
-        }else{
-          this.transitionName = 'slide-right';
-        }
-      }
-    }
   }
 </script>
 

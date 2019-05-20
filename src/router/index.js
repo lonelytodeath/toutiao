@@ -5,7 +5,7 @@ import store from './../store/index';
 Vue.use(Router)
 
 import HomePage from '@/pages/homePage/index';
-import homePageHeader from '@/components/homePageHeader/index';
+import searchPage from '@/pages/search/index';
 const router = new Router({
   routes: [
     {
@@ -19,7 +19,7 @@ const router = new Router({
     {
       path: '/bookmark',
       name: 'Bookmark',
-      component: homePageHeader,
+      component: searchPage,
       meta: {
         index: 2,
       },
@@ -31,7 +31,15 @@ const router = new Router({
       meta: {
         index: 3,
       },
-    }
+    },
+    {
+      name: 'searchPage',
+      path: 'search',
+      component: searchPage,
+      meta: {
+        index: 4,
+      },
+    },
   ]
 });
 

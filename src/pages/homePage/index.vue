@@ -55,12 +55,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .homePage {
+    padding: 1px;
+  }
   .fixedContainer {
+    width: 100%;
+    z-index: 99;
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%;
-    z-index: 99;
   }
   .scrollArticleList {
     margin-top: 3rem;

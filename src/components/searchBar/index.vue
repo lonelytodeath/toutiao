@@ -1,16 +1,24 @@
 <template>
   <div class="searchBar">
-    <input type="text" class="searchInput" placeholder="🔎 搜 你 想 搜 的"/>
+    <input type="search" class="searchInput" placeholder="🔎 搜 你 想 搜 的" :readonly="readonly"/>
   </div>
 </template>
 
 <script>
   export default {
     name: 'searchBar',
+    props: {
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+    },
     data () {
       return {
         msg: '',
       }
+    },
+    methods: {
     }
   };
 </script>
