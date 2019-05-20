@@ -170,4 +170,10 @@
     align-items: center;
     font-size: 16px;
   }
+  .loadMore {
+    text-align: center;
+    margin-top: 5px;
+    height: 20px;
+    color: #60595d;
+  }
 </style>
