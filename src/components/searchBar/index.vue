@@ -1,31 +1,35 @@
 <template>
-  <div class="searchBar">
-    <input type="search" class="searchInput" placeholder="🔎 搜 你 想 搜 的" :readonly="readonly"/>
+  <div class="searchBar" :style="{width: width + 'rem'}">
+    <input type="text" class="searchInput" placeholder="搜 你 想 搜 的" @focus="focus" ref="search" v-model="keyword">
   </div>
 </template>
 
 <script>
   export default {
     name: 'searchBar',
-    props: {
-      readonly: {
-        type: Boolean,
-        default: false
-      },
-    },
+    props: ['onlyClick', 'width'],
     data () {
       return {
-        msg: '',
+        keyword: '',
+      }
+    },
+    watch: {
+      keyword: function (newKeyword) {
+        this.$emit('searchChange', newKeyword);
       }
     },
     methods: {
+      focus: function () {
+        if (this.onlyClick) {
+          this.$refs.search.blur();
+        }
+      }
     }
   };
 </script>
 
 <style lang="scss" scoped>
   .searchBar {
-    width: 6rem;
     padding-left: 0.5rem;
     height: 1.1rem;
   }
@@ -35,5 +39,6 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    font-size: 16px;
   }
 </style>

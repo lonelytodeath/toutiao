@@ -5,7 +5,7 @@
         推荐头条
       </div>
     </div>
-    <search-bar @click.native="clickSearch" :readonly="true"></search-bar>
+    <search-bar @click.native="clickSearch" :onlyClick="true" :width="6"></search-bar>
   </div>
 </template>
 
@@ -24,7 +24,7 @@
     methods: {
       clickSearch: function () {
         this.$router.push({name: 'searchPage'});
-      }
+      },
     }
   };
 </script>
@@ -40,7 +40,6 @@
     align-content: space-around;
   }
   .homePageHeader {
-    height: 2rem;
     background-color: #d43d3d;
   }
   .appName {

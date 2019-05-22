@@ -65,6 +65,9 @@
     left: 0;
     top: 0;
   }
+  .homepageHeaderItem {
+    height: 2rem;
+  }
   .scrollArticleList {
     margin-top: 3rem;
     margin-bottom: 1.5rem;

@@ -13,6 +13,12 @@ class Request {
     const result = await this.$http.get(path);
     return result.data;
   }
+
+  async getNewsListByKeyword(keyword) {
+    const path = `${process.env.API_ROOT}/v1/news/keyword?keyword=${keyword}`;
+    const result = await this.$http.get(path);
+    return result.data;
+  }
 }
 
 export default Request;
